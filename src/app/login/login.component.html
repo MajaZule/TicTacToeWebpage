@@ -1,3 +1,8 @@
-<p>
-  login works!
-</p>
+<div>
+  <input 
+    type="text" 
+    placeholder="Enter player name"
+    (input)="onNameInput($event)"
+    (keyup.enter)="onLogin()">
+  <p>{{ playerName }}</p>
+</div>
