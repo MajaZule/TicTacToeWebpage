@@ -1,14 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from 'node_modules/@angular/common/http';
-
-interface StateData {
-  PlayerID: string;
-  SessionID: string;
-  Players: string[];
-  State;
-  Grid;
-  Timer: number;
-}
+import { PlayerDataService } from '../login/player-data.service';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +9,10 @@ interface StateData {
 export class LoginComponent implements OnInit {
   playerName = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private playerData: PlayerDataService) { }
 
   ngOnInit() {
-
+    
   }
 
   onNameInput(event: any) {
@@ -29,11 +20,8 @@ export class LoginComponent implements OnInit {
     console.log(this.playerName);
   }
 
-  onLogin(playerName: any) {
-    return this.http.post(
-      'http://127.0.0.1:8080', playerName
-    ).subscribe((responseData: StateData) => {
-      console.log(responseData);
-    });
+  onLogin() {
+    this.playerData.onLogin(this.playerName);
   }
+
 }
