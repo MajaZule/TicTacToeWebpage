@@ -1,13 +1,11 @@
-<form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+<form #f="ngForm" (ngSubmit)="onLogin(f)">
   <div>
     <input 
       type="text" 
       name="name1"
       id="name1"
       placeholder="Enter player name1"
-      [(ngModel)]="formUser.name1"
-      #name1="ngModel">
-    <p>{{ playerName }}</p>
+      ngModel>
   </div>
   <div>
     <input 
@@ -15,9 +13,7 @@
       name="name2"
       id="name2"
       placeholder="Enter player name2"
-      [(ngModel)]="formUser.name2"
-      #name2="ngModel">
-    <p>{{ playerName }}</p>
+      ngModel>
   </div>
   <div>
     <button type="submit" class="btn btn-success" (click)="onLogin()">Play game</button>

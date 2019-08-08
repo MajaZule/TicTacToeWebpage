@@ -18,16 +18,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  onNameInput(form: NgForm) {
-    // const playerNameValue = form.value;
-    // this.firstPlayerName = playerNameValue.name1;
-    // this.secondPlayerName = playerNameValue.name2;
-  }
-
   onLogin(form: NgForm) {
     console.log(form);
+
+    const value = form.value;
+    this.firstPlayerName = value.name1;
+    this.secondPlayerName = value.name2;
+
     // this.playerData.loginFirstPlayer(this.firstPlayerName);
     // this.playerData.loginSecondPlayer(this.secondPlayerName);
+    // console.log(this.firstPlayerName);
+    // console.log(this.secondPlayerName);
     
     // this.router.navigate(['/game-on']);
   }
