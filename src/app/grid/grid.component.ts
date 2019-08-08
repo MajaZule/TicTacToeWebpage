@@ -7,13 +7,16 @@ import { PlayerDataService } from '../player-data.service';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
-  name: string;
+  firstPlayerName: string;
+  secondPlayerName: string;
 
   constructor(private playerData: PlayerDataService) { }
 
   ngOnInit() {
-    this.name = this.playerData.loginUser;
-    console.log(this.name);
+    this.firstPlayerName = this.playerData.loginUserOne;
+    this.secondPlayerName = this.playerData.loginUserTwo;
+    console.log(this.firstPlayerName);
+    console.log(this.secondPlayerName);
   }
 
 }

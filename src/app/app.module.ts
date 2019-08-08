@@ -8,6 +8,7 @@ import { GridComponent } from './grid/grid.component';
 import { EndgameComponent } from './endgame/endgame.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
