@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerDataService } from '../login/player-data.service';
+import { PlayerDataService } from '../player-data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,9 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private playerData: PlayerDataService, private router: Router) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   onNameInput(event: any) {
     this.playerName = (<HTMLInputElement>event.target).value;

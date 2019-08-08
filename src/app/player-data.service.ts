@@ -14,10 +14,12 @@ import { HttpClient } from 'node_modules/@angular/common/http';
   providedIn: 'root'
 })
 export class PlayerDataService {
+  loginUser = '';
 
   constructor(private http: HttpClient) { }
 
   login(playerName: string) {
+    this.loginUser = playerName;
     return this.http.post(
       'http://127.0.0.1:8080/login?name=' + playerName, ""
     ).subscribe((responseData: any) => {
