@@ -17,7 +17,7 @@ export class PlayerDataService {
 
   constructor(private http: HttpClient) { }
 
-  onLogin(playerName: string) {
+  login(playerName: string) {
     return this.http.post(
       'http://127.0.0.1:8080/login?name=' + playerName, ""
     ).subscribe((responseData: any) => {

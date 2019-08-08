@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerDataService } from '../login/player-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { PlayerDataService } from '../login/player-data.service';
 export class LoginComponent implements OnInit {
   playerName = '';
 
-  constructor(private playerData: PlayerDataService) { }
+  constructor(private playerData: PlayerDataService, private router: Router) { }
 
   ngOnInit() {
     
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.playerData.onLogin(this.playerName);
+    this.playerData.login(this.playerName);
+    this.router.navigate(['/game-on']);
   }
-
 }

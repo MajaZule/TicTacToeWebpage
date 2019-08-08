@@ -7,6 +7,12 @@ import { LoginComponent } from './login/login.component';
 import { GridComponent } from './grid/grid.component';
 import { EndgameComponent } from './endgame/endgame.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'game-on', component: GridComponent }
+];
 
 @NgModule({
   declarations: [
@@ -18,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
