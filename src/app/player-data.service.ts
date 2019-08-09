@@ -14,24 +14,14 @@ import { HttpClient } from 'node_modules/@angular/common/http';
   providedIn: 'root'
 })
 export class PlayerDataService {
-  loginUserOne = '';
-  loginUserTwo = '';
+  loginUser = '';
 
   constructor(private http: HttpClient) { }
 
-  loginFirstPlayer(playerNameOne: string) {
-    this.loginUserOne = playerNameOne;
+  login(playerName: string) {
+    this.loginUser = playerName;
     return this.http.post(
-      'http://127.0.0.1:8080/login?name=' + playerNameOne, ""
-    ).subscribe((responseData: any) => {
-      console.log(responseData);
-    });
-  }
-
-  loginSecondPlayer(playerNameTwo: string) {
-    this.loginUserTwo = playerNameTwo;
-    return this.http.post(
-      'http://127.0.0.1:8080/login?name=' + playerNameTwo, ""
+      'http://127.0.0.1:8080/login?name=' + playerName, ""
     ).subscribe((responseData: any) => {
       console.log(responseData);
     });
