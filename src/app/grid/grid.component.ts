@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerDataService, GridSymbol } from '../player-data.service';
-
+import { PlayerDataService } from '../player-data.service';
 
 @Component({
   selector: 'app-grid',
@@ -8,17 +7,13 @@ import { PlayerDataService, GridSymbol } from '../player-data.service';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
-  grid: number[];
-  gridSymbols: GridSymbol;
+  name: string;
 
   constructor(private playerData: PlayerDataService) { }
 
   ngOnInit() {
-    this.grid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  }
-
-  onGameOn() {
-    
+    this.name = this.playerData.loginUser;
+    console.log(this.name);
   }
 
 }
