@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'node_modules/@angular/common/http';
+import { HttpClient, HttpParams } from 'node_modules/@angular/common/http';
 
 
 export interface State {
@@ -32,24 +32,49 @@ export interface StateData {
 export class PlayerDataService {
   player = '';
   responseData: StateData;
-  newState: StateData;
 
   constructor(private http: HttpClient) { }
 
   login(playerName: string) {
+    //const response = this.responseData;
     this.player = playerName;
-    return this.http.post(
-      'http://127.0.0.1:8080/login?name=' + playerName, ""
-    ).subscribe((responseData) => {
-      console.log();
+    return this.http.get(
+      'http://127.0.0.1:8080/login?name=' + playerName
+    ).subscribe((response: StateData) => {
+      this.responseData = response;
+      console.log(this.responseData);
     });
   }
 
-  // playing() {
-  //   return this.http.post(
-  //     'http://127.0.0.1:8080/state' + this.responseData, ""
-  //   ).subscribe((newState) => {
-  //     console.log(newState);
-  //   });
-  // }
+  state() {
+    const playerID = this.responseData.PlayerID;
+    const sessionID = this.responseData.SessionID;
+    let searchParams = new HttpParams();
+    searchParams = searchParams.append('PlayerID', `${playerID}`);
+    searchParams = searchParams.append('SessionID', `${sessionID}`);
+    return this.http.get(
+      'http://127.0.0.1:8080/state', 
+      { params: searchParams }
+    ).subscribe((response: StateData) => {
+      this.responseData = response;
+      console.log(response);
+    });
+  }
+
+  action() {
+    const playerID = this.responseData.PlayerID;
+    let x: number;
+    let y: number;
+    let searchParams = new HttpParams();
+    searchParams = searchParams.append('PlayerID', `${playerID}`);
+    searchParams = searchParams.append('x', `${x}`);
+    searchParams = searchParams.append('y', `${y}`);
+    return this.http.get(
+      'http://127.0.0.1:8080/action',
+      { params: searchParams }
+    ).subscribe((response: StateData) => {
+      this.responseData = response;
+      console.log(response);
+    })
+  }
 }
