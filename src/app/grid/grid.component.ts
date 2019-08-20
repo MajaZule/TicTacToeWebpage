@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerDataService, State } from '../player-data.service';
+import { PlayerDataService, StateType } from '../player-data.service';
+import { Action } from 'rxjs/internal/scheduler/Action';
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
@@ -8,37 +9,34 @@ import { PlayerDataService, State } from '../player-data.service';
 export class GridComponent implements OnInit {
   interval: any;
   playerNumber: number;
-  // state: State;
-  wait: number;
-  player1turn: number;
-  player2turn: number;
-  player1won: number;
-  player2won: number;
-  draw: number;
+  state : StateType;
+  isFirstPlayer : boolean;
+  yourTurn : boolean;
+  opponentsTurn : boolean;
+  playerName: string;
 
-  constructor(private playerData: PlayerDataService) { }
+  constructor(private playerService: PlayerDataService) { }
 
   ngOnInit() {
-    const xCoor = this.playerData.x;
-    const yCoor = this.playerData.y; 
-
-    // this.state = this.playerData.responseData.State;
-
-    this.wait = this.playerData.responseData.State.Wait;
-    this.player1turn = this.playerData.responseData.State.Player1Turn;
-    this.player2turn = this.playerData.responseData.State.Player2Turn;
-    this.player1won = this.playerData.responseData.State.Player1Won;
-    this.player2won = this.playerData.responseData.State.Player2Won;
-    this.draw = this.playerData.responseData.State.Draw;
-
-    this.playerNumber = this.playerData.responseData.Players.length;
+    this.playerNumber = this.playerService.responseData.Players.length;
+    this.playerName = this.playerService.playerName;
+    
     this.interval = setInterval(() => {
-      this.playerData.state();
+      this.playerService.state();
+      this.onStateChanged();    
     }, 500);
   }
 
-  onState() {
-    
+  onGridClick(x : number, y : number)  {
+    console.log("Clicked on x:" + x + ",y:" + y);
+    this.playerService.action(x, y);
+  }
+
+  onStateChanged() {
+    this.state = this.playerService.responseData.State;
+    this.isFirstPlayer = this.playerService.playerName === this.playerService.responseData.Players[0];
+    this.yourTurn = (this.state === StateType.Player1Turn && this.isFirstPlayer) || (this.state == StateType.Player2Turn && !this.isFirstPlayer);
+    this.opponentsTurn = (this.state === StateType.Player2Turn && this.isFirstPlayer) || (this.state == StateType.Player1Turn && !this.isFirstPlayer);
   }
 
 }
