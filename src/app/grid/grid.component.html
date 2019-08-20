@@ -3,7 +3,8 @@
   <h2>Hi, {{ name }}</h2>
 </div>
 
-<div>
-  <button (click)="onState()">Play</button>
+<div [ngSwitch]="playerNumber < 2">
+  <div *ngSwitchCase="playerNumber === 2"></div>
+  <div *ngSwitchDefault>Waiting on second player</div>
 </div>
 

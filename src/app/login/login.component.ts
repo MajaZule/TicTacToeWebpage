@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.playerData.login(this.playerName);
-    this.router.navigate(['/game-on']);
+    setTimeout(() => {
+      this.router.navigate(['/game-on']);
+    }, 500);
   }
 }

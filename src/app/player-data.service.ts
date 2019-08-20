@@ -32,11 +32,12 @@ export interface StateData {
 export class PlayerDataService {
   player = '';
   responseData: StateData;
+  x: number;
+  y: number;
 
   constructor(private http: HttpClient) { }
 
   login(playerName: string) {
-    //const response = this.responseData;
     this.player = playerName;
     return this.http.get(
       'http://127.0.0.1:8080/login?name=' + playerName
@@ -63,12 +64,10 @@ export class PlayerDataService {
 
   action() {
     const playerID = this.responseData.PlayerID;
-    let x: number;
-    let y: number;
     let searchParams = new HttpParams();
     searchParams = searchParams.append('PlayerID', `${playerID}`);
-    searchParams = searchParams.append('x', `${x}`);
-    searchParams = searchParams.append('y', `${y}`);
+    searchParams = searchParams.append('x', `${this.x}`);
+    searchParams = searchParams.append('y', `${this.y}`);
     return this.http.get(
       'http://127.0.0.1:8080/action',
       { params: searchParams }
