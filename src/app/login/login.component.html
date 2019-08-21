@@ -1,13 +1,19 @@
-<div>
-  <input 
-    type="text" 
-    placeholder="Enter player name"
-    (input)="onNameInput($event)"
-    (keyup.enter)="onLogin()">
-  <p>{{ playerName }}</p>
-</div>
-<div>
-    <a [routerLink]="['/game-on']" routerLinkActive="active"></a>
+<div class="login">
+  <div>
+    <h3>Wellcome to TicTacToe!</h3>
+  </div>
+  
+  <div>
+    <input 
+      type="text" 
+      placeholder="Enter player name"
+      (input)="onNameInput($event)"
+      (keyup.enter)="onLogin()">
+    <p>{{ playerName }}</p>
+  </div>
+  <div>
+      <a [routerLink]="['/game-on']" routerLinkActive="active"></a>
+  </div>
 </div>
 
 

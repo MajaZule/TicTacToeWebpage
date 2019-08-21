@@ -1,25 +1,54 @@
 
-<div>
-  <h2>Hi, {{ playerName }}</h2>
-</div>
+<div class="grid">
+  <div>
+    <h2>Hi, {{ playerName }}</h2>
+  </div>
+  
+  <div>
+    <div *ngIf="state === 0">Waiting for second player</div>
+    <div *ngIf="yourTurn">Your turn</div>
+    <div *ngIf="opponentsTurn">Opponents turn</div>
 
-<div>
-  <div *ngIf="state === 0">Waiting for second player</div>
-  <div *ngIf="yourTurn">Your turn</div>
-  <div *ngIf="opponentsTurn">Opponents turn</div>
+    <div *ngIf="yourTurn || opponentsTurn">
+      
+      <table>
+        <tr>
+          <td>
+            <button (click)="onGridClick(0,2)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+          <td>
+            <button (click)="onGridClick(1,2)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+          <td>
+            <button (click)="onGridClick(2,2)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button (click)="onGridClick(0,1)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+          <td>
+            <button (click)="onGridClick(1,1)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+          <td>
+            <button (click)="onGridClick(2,1)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button (click)="onGridClick(0,0)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+          <td>
+            <button (click)="onGridClick(1,0)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+          <td>
+            <button (click)="onGridClick(2,0)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+          </td>
+        </tr>
+      </table>   
 
-  <div *ngIf="yourTurn || opponentsTurn">
-    <button (click)="onGridClick(0,0)">1</button>
-    <button (click)="onGridClick(1,0)">2</button>
-    <button (click)="onGridClick(2,0)">3</button>
-    <button (click)="onGridClick(0,1)">4</button>
-    <button (click)="onGridClick(1,1)">5</button>
-    <button (click)="onGridClick(2,1)">6</button>
-    <button (click)="onGridClick(0,2)">7</button>
-    <button (click)="onGridClick(1,2)">8</button>
-    <button (click)="onGridClick(2,2)">9</button>
+    </div> 
   </div>
 </div>
-
 
 
