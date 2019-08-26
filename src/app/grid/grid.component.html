@@ -14,7 +14,7 @@
       <table>
         <tr>
           <td>
-            <button (click)="onGridClick(0,2)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
+            <button (click)="onGridClick(0,2)"><span *ngIf="this.gridSymbol === 1">X</span></button>
           </td>
           <td>
             <button (click)="onGridClick(1,2)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
@@ -43,7 +43,7 @@
           </td>
           <td>
             <button (click)="onGridClick(2,0)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
-          </td>
+          </td> 
         </tr>
       </table>   
 

@@ -13,6 +13,9 @@ export class GridComponent implements OnInit {
   yourTurn : boolean;
   opponentsTurn : boolean;
   playerName: string;
+  gridSymbol: number[];
+  symbolX: string;
+  symbolO: string;
   player1;
   player2;
   value: string;
@@ -26,6 +29,10 @@ export class GridComponent implements OnInit {
   ngOnInit() {
     this.playerNumber = this.playerService.responseData.Players.length;
     this.playerName = this.playerService.playerName;
+    this.gridSymbol = this.playerService.responseData.GridSymbol;
+    this.symbolX = 'X';
+    this.symbolO = 'O';
+
     this.player1 = {name: this.playerName[0], symbol: 'X'};
     this.player2 = {name: this.playerName[1], symbol: 'O'};
     
