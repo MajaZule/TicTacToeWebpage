@@ -1,6 +1,7 @@
 <div class="login">
   <div>
-    <h3>Wellcome to TicTacToe!</h3>
+    <h3>Wellcome to</h3>
+    <h2>TicTacToe!</h2>
   </div>
   
   <div>
@@ -9,7 +10,6 @@
       placeholder="Enter player name"
       (input)="onNameInput($event)"
       (keyup.enter)="onLogin()">
-    <p>{{ playerName }}</p>
   </div>
   <div>
       <a [routerLink]="['/game-on']" routerLinkActive="active"></a>
