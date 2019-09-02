@@ -2,6 +2,11 @@
 
 html, body {
     height: 100%;
-    background-color: #1e3eca !important;
+    background-image: url("src/assets/videoblocks-plexus-beautiful-stylish-digital-wallpaper_hk0f70l9z_thumbnail-full01.png");
     font-family: 'Cabin Sketch', cursive !important;
+}
+
+div.login {
+    height: 100%;
+    display: inline-block;
 }

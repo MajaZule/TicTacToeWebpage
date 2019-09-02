@@ -5,9 +5,9 @@
   </div>
   
   <div>
-    <div *ngIf="state === 0">Waiting for second player</div>
-    <div *ngIf="yourTurn">Your turn</div>
-    <div *ngIf="opponentsTurn">Opponents turn</div>
+    <div class="waiting-text" *ngIf="state === 0">Waiting for second player</div>
+    <div class="waiting-text" *ngIf="yourTurn">Your turn</div>
+    <div class="waiting-text" *ngIf="opponentsTurn">Opponents turn</div>
 
     <div *ngIf="yourTurn || opponentsTurn">
       

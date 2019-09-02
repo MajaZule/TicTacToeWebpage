@@ -21,11 +21,26 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]),
     trigger('flyIn', [
       state('in', style({
-        transform: 'translateX(0)'
+        transform: 'translateX(0)',
+        opacity: 1
       })),
       transition('void => *', [
-        style({transform: 'translateX(-100%)'}),
-        animate('0.3s 3s')
+        style({
+          transform: 'translateX(-100%)',
+          opacity: 0
+        }),
+        animate('0.3s 2.5s')
+      ])
+    ]),
+    trigger('invisibleVisibleInput', [
+      state('void', style({
+        opacity: 0
+      })),
+      state('visible', style({
+        opacity: 1
+      })),
+      transition('void => visible', [
+        animate('2s 4s ease-in')
       ])
     ])
   ]

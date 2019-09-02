@@ -9,7 +9,8 @@
       type="text" 
       placeholder="Enter player name"
       (input)="onNameInput($event)"
-      (keyup.enter)="onLogin()">
+      (keyup.enter)="onLogin()"
+      [@invisibleVisibleInput]="isVisible ? 'visible' : 'invisible'">
   </div>
   <div>
       <a [routerLink]="['/game-on']" routerLinkActive="active"></a>

@@ -3,23 +3,25 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    padding: 15%;
+    padding: 5%;
 }
 
 h3 {
-    padding: 5%;
+    padding-top: 5%;
+    padding-bottom: 0%;
     color: white;
     font-size: 300%;
 }
 
 h2 {
-    padding: 6%;
+    padding-top: 2%;
+    padding-bottom: 8%;
     color: white;
-    font-size: 450%;
+    font-size: 500%;
 }
 
 input {
-    height: 120%;
-    width: 60%;
+    height: 35px;
+    width: 500px;
 }
 
