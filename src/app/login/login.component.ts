@@ -29,7 +29,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
           transform: 'translateX(-100%)',
           opacity: 0
         }),
-        animate('0.3s 2.5s')
+        animate('0.5s 2.5s')
       ])
     ]),
     trigger('invisibleVisibleInput', [

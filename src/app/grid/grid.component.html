@@ -14,7 +14,11 @@
       <table>
         <tr>
           <td>
-            <button (click)="onGridClick(0,2)"><span *ngIf="this.gridSymbol === 1">X</span></button>
+            <button (click)="onGridClick(0,2)">
+              <ng-template [ngIf]="this.gridSymbol[0] === 0"><span></span></ng-template>
+              <ng-template [ngIf]="this.gridSymbol[0] === 1"><span>X</span></ng-template>
+              <ng-template [ngIf]="this.gridSymbol[0] === 2"><span>O</span></ng-template>
+            </button>
           </td>
           <td>
             <button (click)="onGridClick(1,2)"><span *ngIf="x === coorX && y === coorY">{{ value }}</span></button>
